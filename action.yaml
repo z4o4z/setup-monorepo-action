@@ -16,4 +16,4 @@ runs:
         cache-dependency-path: '**/package-lock.json'
     - name: install
       shell: bash
-      run: npm install --workspaces --include-workspace-root
+      run: npm ci --workspaces --include-workspace-root
