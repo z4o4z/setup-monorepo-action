@@ -1,0 +1,17 @@
+name: setup-monorepo
+runs:
+  using: 'composite'
+  steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: reconfigure git to use HTTP authentication
+      run: >
+        git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+    - name: setup node js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: npm
+        cache-dependency-path: '**/package-lock.json'
+    - name: install
+      run: npm install --workspaces --include-workspace-root
