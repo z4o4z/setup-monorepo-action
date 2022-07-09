@@ -5,6 +5,7 @@ runs:
     - name: checkout
       uses: actions/checkout@v3
     - name: reconfigure git to use HTTP authentication
+      shell: bash
       run: >
         git config --global url."https://github.com/".insteadOf ssh://git@github.com/
     - name: setup node js
@@ -14,4 +15,5 @@ runs:
         cache: npm
         cache-dependency-path: '**/package-lock.json'
     - name: install
+      shell: bash
       run: npm install --workspaces --include-workspace-root
